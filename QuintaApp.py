@@ -25,10 +25,17 @@ if "gatitos" not in st.session_state:
     ]
 
 # Mostrar gatitos disponibles
-for gatito in st.session_state.gatitos:
+for i, gatito in enumerate(st.session_state.gatitos):
     st.write(f"**Nombre**: {gatito['nombre']}")
     st.write(f"**Edad**: {gatito['edad']}")
     st.write(f"**Descripción**: {gatito['descripcion']}")
+    
+    # Botón para adoptar (eliminar gatito)
+    if st.button(f"Adoptar {gatito['nombre']}", key=f"adopt_{i}"):
+        st.session_state.gatitos.pop(i)  # Elimina el gatito de la lista
+        st.success(f"¡Felicidades! Has adoptado a {gatito['nombre']} 🏡❤️")
+        break  # Después de adoptar, salimos del bucle para evitar conflictos con índices.
+
     st.write("---")
 
 # Formulario para registrar nuevos gatitos
@@ -46,4 +53,11 @@ if st.button("Registrar Gatito"):
     else:
         st.warning("Por favor completa todos los campos.")
 
+# Información de contacto
+st.write("""
+### ¡Contáctanos!
+Si te gustaría adoptar o saber más, puedes contactarnos en:
+- **Email**: refugio.gatitos@ejemplo.com
+- **Teléfono**: 123-456-7890
+""")
 
