@@ -45,7 +45,7 @@ st.subheader("Registrar Materia")
 nombre = st.text_input("Nombre de la materia")
 calificacion = st.number_input("Calificación obtenida (0-5)", min_value=0.0, max_value=5.0, step=0.1)
 creditos = st.number_input("Créditos de la materia", min_value=1, step=1)
-tipologia = st.selectbox("Tipología de la asignatura", ["Fundamental Obligatoria", "Fundamental Optativa", "Libre Eleccion"])
+tipologia = st.selectbox("Tipología de la asignatura", ["Fundamental Obligatoria", "Fundamental Optativa", "Libre Eleccion", "Disciplinar Obligatoria","Disciplinar Optativa"])
 
 # Botón para agregar la materia
 if st.button("Agregar Materia"):
