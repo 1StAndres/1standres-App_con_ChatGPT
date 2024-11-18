@@ -36,7 +36,7 @@ def calcular_papa_por_tipologia(tipologia):
         return 0.0
 
 # Título de la app
-st.title("Cálculo del Promedio Académico Ponderado Acumulado (PAPA)")
+st.title("Cálculo del Promedio Académico Ponderado Acumulado (PAPA), por Andrés Arbeláez Morales")
 
 # Ingreso de datos de materia
 st.subheader("Registrar Materia")
