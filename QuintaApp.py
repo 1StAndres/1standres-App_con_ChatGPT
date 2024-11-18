@@ -106,20 +106,31 @@ else:
 
 # Gráfico de adopciones por mes
 if st.session_state.gatitos_adoptados:
+    # Asegúrate de que la columna 'fecha_adopcion' sea tipo datetime
     fechas_adopcion = [g['fecha_adopcion'] for g in st.session_state.gatitos_adoptados]
-    meses_adopcion = [f.date().replace(day=1) for f in fechas_adopcion]  # Agrupar por mes
-
-    # Convertir en DataFrame
+    
+    # Convertir las fechas a tipo datetime (si no lo son ya)
+    fechas_adopcion = pd.to_datetime(fechas_adopcion)
+    
+    # Extraer el mes (y el año) de la fecha de adopción
+    meses_adopcion = fechas_adopcion.dt.to_period('M').dt.to_timestamp()  # Convertir a periodo mensual
+    
+    # Convertir en DataFrame para la agrupación
     df_adopciones = pd.DataFrame({'fecha_adopcion': meses_adopcion})
+    
+    # Agrupar por mes y contar el número de adopciones por mes
     adopciones_por_mes = df_adopciones.groupby('fecha_adopcion').size().reset_index(name='cantidad')
     
     st.subheader("Gráfico: Adopciones por Mes")
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(10, 6))
     sns.barplot(data=adopciones_por_mes, x='fecha_adopcion', y='cantidad', ax=ax)
+    
+    # Formatear las etiquetas del eje X para que se muestren el mes y año
     ax.set_xticklabels(adopciones_por_mes['fecha_adopcion'].dt.strftime('%b %Y'), rotation=45)
     ax.set_xlabel('Mes')
     ax.set_ylabel('Número de Adopciones')
     st.pyplot(fig)
+
 
 # Gráfico de distribución de edades
 if st.session_state.gatitos:
