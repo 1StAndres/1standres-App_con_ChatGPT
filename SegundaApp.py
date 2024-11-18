@@ -95,7 +95,7 @@ def convertir(valor, categoria, conversion):
             return valor / 1024
 
 # Título de la app
-st.title('Conversor de Unidades')
+st.title('Conversor de Unidades, por Andrés Arbeláez Morales')
 
 # Descripción de la app
 st.write('Selecciona una categoría y luego elige el tipo de conversión que deseas realizar.')
