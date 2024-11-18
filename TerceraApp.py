@@ -61,15 +61,15 @@ def generar_reporte():
     fecha_hoy = datetime.today()
     fecha_semana_pasada = fecha_hoy - timedelta(days=7)
     
-    ingresos_semanales = sum(ingreso['monto'] for ingreso in st.session_state.ingresos if ingreso['fecha'] >= fecha_semana_pasada)
-    gastos_semanales = sum(gasto['monto'] for gasto in st.session_state.gastos if gasto['fecha'] >= fecha_semana_pasada)
+    # Asegurarnos de que 'ingreso['fecha']' es un objeto datetime
+    ingresos_semanales = sum(ingreso['monto'] for ingreso in st.session_state.ingresos if isinstance(ingreso['fecha'], datetime) and ingreso['fecha'] >= fecha_semana_pasada)
+    gastos_semanales = sum(gasto['monto'] for gasto in st.session_state.gastos if isinstance(gasto['fecha'], datetime) and gasto['fecha'] >= fecha_semana_pasada)
     
     reporte_semanal = {
         'Ingresos Semanales': ingresos_semanales,
         'Gastos Semanales': gastos_semanales,
         'Diferencia Semanal (Ingreso - Gasto)': ingresos_semanales - gastos_semanales,
     }
-
     return reporte_mensual, reporte_semanal
 
 # Título y descripción
