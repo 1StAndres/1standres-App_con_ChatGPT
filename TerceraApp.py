@@ -73,7 +73,7 @@ def generar_reporte():
     return reporte_mensual, reporte_semanal
 
 # Título y descripción
-st.title('Registro de Finanzas Personales')
+st.title('Registro de Finanzas Personales, por Andrés Arbeláez Morales')
 st.write('Registra tus ingresos, gastos, presupuesto y metas de ahorro. Genera reportes semanales y mensuales.')
 
 # Ingresar presupuesto mensual
