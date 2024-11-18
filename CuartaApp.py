@@ -73,7 +73,7 @@ else:
 
 # Cálculo del PAPA por tipología
 st.subheader("Cálculo del PAPA por Tipología")
-tipologias = ["Teórica", "Práctica", "Electiva"]
+tipologias = ["Fundamental Obligatoria", "Fundamental Optativa", "Libre Eleccion", "Disciplinar Obligatoria","Disciplinar Optativa"]
 tipologia_seleccionada = st.selectbox("Selecciona la tipología para calcular el PAPA", tipologias)
 
 if st.session_state.materias:
