@@ -53,11 +53,4 @@ if st.button("Registrar Gatito"):
     else:
         st.warning("Por favor completa todos los campos.")
 
-# Información de contacto
-st.write("""
-### ¡Contáctanos!
-Si te gustaría adoptar o saber más, puedes contactarnos en:
-- **Email**: refugio.gatitos@ejemplo.com
-- **Teléfono**: 123-456-7890
-""")
 
