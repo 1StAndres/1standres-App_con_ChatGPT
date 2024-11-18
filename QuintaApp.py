@@ -140,3 +140,4 @@ if st.session_state.gatitos:
     ax.set_xlabel('Peso (en kg)')
     ax.set_ylabel('Número de Gatitos')
     st.pyplot(fig)
+
