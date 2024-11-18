@@ -132,6 +132,7 @@ if st.session_state.gatitos_adoptados:
     st.pyplot(fig)
 
 
+
 # Gráfico de distribución de edades
 if st.session_state.gatitos:
     edades = [g['edad'] for g in st.session_state.gatitos]
