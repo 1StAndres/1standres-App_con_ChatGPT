@@ -3,16 +3,21 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Si ya tienes los registros en `st.session_state.gatitos_adoptados`, usaremos esa variable.
-# Ejemplo de cómo pueden estar estructurados los datos de los gatitos (si no tienes datos previos, puedes definir algunos aquí):
-# st.session_state.gatitos_adoptados = [
-#     {'nombre': 'Gatito1', 'peso': 2.5, 'fecha_adopcion': '2023-06-15'},
-#     {'nombre': 'Gatito2', 'peso': 3.0, 'fecha_adopcion': '2023-06-17'},
-#     {'nombre': 'Gatito3', 'peso': 4.0, 'fecha_adopcion': '2023-07-01'},
-#     {'nombre': 'Gatito4', 'peso': 2.3, 'fecha_adopcion': '2023-07-05'},
-# ]
+# Verificar si 'gatitos_adoptados' existe en session_state, si no, inicialízalo
+if 'gatitos_adoptados' not in st.session_state:
+    st.session_state.gatitos_adoptados = []
 
-# Asegúrate de tener gatitos adoptados en el estado de sesión antes de ejecutar el gráfico
+# Si ya tienes los registros de adopción, puedes agregar manualmente algunos para probar:
+# Ejemplo de gatitos adoptados (puedes comentar o eliminar esta parte cuando tengas datos reales)
+if not st.session_state.gatitos_adoptados:
+    st.session_state.gatitos_adoptados = [
+        {'nombre': 'Gatito1', 'peso': 2.5, 'fecha_adopcion': '2023-06-15'},
+        {'nombre': 'Gatito2', 'peso': 3.0, 'fecha_adopcion': '2023-06-17'},
+        {'nombre': 'Gatito3', 'peso': 4.0, 'fecha_adopcion': '2023-07-01'},
+        {'nombre': 'Gatito4', 'peso': 2.3, 'fecha_adopcion': '2023-07-05'},
+    ]
+
+# Comprobar si hay gatitos adoptados
 if st.session_state.gatitos_adoptados:
     # Extraer los datos necesarios de los gatitos adoptados
     fechas_adopcion = [g['fecha_adopcion'] for g in st.session_state.gatitos_adoptados]
@@ -69,4 +74,5 @@ if st.session_state.gatitos_adoptados:
     
     # Mostrar el gráfico en Streamlit
     st.pyplot(fig)
+
 
