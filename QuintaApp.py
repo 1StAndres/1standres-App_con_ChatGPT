@@ -15,7 +15,7 @@ Somos un refugio dedicado a la protección y bienestar de los gatos. Nuestro obj
 ### Nuestros Gatitos:
 """)
 
-# Lista de gatitos disponibles para adopción
+# Lista de gatitos disponibles (almacenada en st.session_state para persistencia)
 if "gatitos" not in st.session_state:
     st.session_state.gatitos = [
         {"nombre": "Miau", "edad": "2 meses", "descripcion": "Un gatito juguetón y cariñoso."},
@@ -45,4 +45,5 @@ if st.button("Registrar Gatito"):
         st.success(f"¡Gatito {nombre} registrado exitosamente!")
     else:
         st.warning("Por favor completa todos los campos.")
+
 
