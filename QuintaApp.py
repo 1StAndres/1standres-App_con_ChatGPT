@@ -1,7 +1,7 @@
 import streamlit as st
 
 # Título de la página
-st.title("Refugio de Gatitos 🐱")
+st.title("Refugio de Gatitos 🐱, por Andres Arbelaez")
 
 # Descripción
 st.write("""
