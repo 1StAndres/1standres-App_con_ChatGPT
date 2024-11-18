@@ -112,8 +112,8 @@ if st.session_state.gatitos_adoptados:
     # Convertir las fechas a tipo datetime (si no lo son ya)
     fechas_adopcion = pd.to_datetime(fechas_adopcion)
     
-    # Extraer el mes (y el año) de la fecha de adopción
-    meses_adopcion = fechas_adopcion.dt.to_period('M').dt.to_timestamp()  # Convertir a periodo mensual
+    # Extraer el mes y año (en formato 'YYYY-MM')
+    meses_adopcion = fechas_adopcion.dt.to_period('M').astype(str)  # Convertir a formato 'YYYY-MM'
     
     # Convertir en DataFrame para la agrupación
     df_adopciones = pd.DataFrame({'fecha_adopcion': meses_adopcion})
@@ -126,10 +126,11 @@ if st.session_state.gatitos_adoptados:
     sns.barplot(data=adopciones_por_mes, x='fecha_adopcion', y='cantidad', ax=ax)
     
     # Formatear las etiquetas del eje X para que se muestren el mes y año
-    ax.set_xticklabels(adopciones_por_mes['fecha_adopcion'].dt.strftime('%b %Y'), rotation=45)
+    ax.set_xticklabels(adopciones_por_mes['fecha_adopcion'], rotation=45)
     ax.set_xlabel('Mes')
     ax.set_ylabel('Número de Adopciones')
     st.pyplot(fig)
+
 
 
 
